@@ -212,13 +212,15 @@ class Logic(QMainWindow, Ui_MainWindow):
         :param symbol: The operator to apply to the current equation.
         """
         try:
+            if self.secondNum != '':
+                raise exception()
             if self.firstNum == '':
                 raise exception()
             self.equationSymbol = symbol
             self.displayScreen.setText(f'{self.firstNum} {self.equationSymbol}')
             self.newNum = True
         except:
-            self.displayScreen.setText('Choose a number first')
+            self.displayScreen.setText('Error')
 
     def delete(self):
         """
@@ -242,6 +244,12 @@ class Logic(QMainWindow, Ui_MainWindow):
             self.squareButton.hide()
             self.rectangleButton.hide()
             self.triangleButton.hide()
+            self.submitOne.hide()
+            self.submitTwo.hide()
+            self.label.hide()
+            self.label_2.hide()
+            self.inputOne.hide()
+            self.inputTwo.hide()
         else:
             self.circleButton.show()
             self.squareButton.show()
